@@ -1,0 +1,21 @@
+- hosts: all
+  sudo: true
+  tasks:
+    - name: add the repository with mesos and marthon
+      shell: rpm -Uvh http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm
+    
+    - name: add the repository with zookeeper
+      shell: rpm -Uvh http://archive.cloudera.com/cdh4/one-click-install/redhat/6/x86_64/cloudera-cdh-4-0.x86_64.rpm
+      
+    - name: install mesos 
+      yum: name=mesos  state=present
+      
+    - name: install marathon
+      yum: name=marathon  state=present
+      
+    - name: install zookeeper 
+      yum: name=zookeeper  state=present
+      
+    - name: init zookeeper
+      shell: zookeeper-server-initialize --myid=1
+      
