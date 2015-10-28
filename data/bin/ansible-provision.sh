@@ -9,4 +9,4 @@ echo "Verify installation"
 ansible --version
 
 echo "Running Ansible"
-sudo ansible-playbook /vagrantData/playbook/playbook.yml --connection=local
+sudo ansible-playbook /home/vagrant/sync/data/playbook/playbook.yml --connection=local
